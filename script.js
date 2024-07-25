@@ -57,15 +57,17 @@ async function main() {
     const data = await fetchData('data.json');
     const answer = findAnswer(question, data);
 
+    const updated = await updateKeyUsage(key);
+
+    if (!updated) {
+        document.body.innerText = JSON.stringify({ status: 500, message: "Lỗi khi cập nhật key !" });
+        return;
+    }
+
     if (answer) {
-        const updated = await updateKeyUsage(key);
-        if (updated) {
-            document.body.innerText = JSON.stringify({ status: 200, answer: answer });
-        } else {
-            document.body.innerText = JSON.stringify({ status: 500, message: "Lỗi khi cập nhật key !" });
-        }
+        document.body.innerText = JSON.stringify({ status: 200, answer: answer });
     } else {
-        document.body.innerText = JSON.stringify({ status: 404, message: "Không tìm thấy câu trả lời !" });
+        document.body.innerText = JSON.stringify({ status: 200, message: "Em hok hiểu anh đang nói gì !" });
     }
 }
 
