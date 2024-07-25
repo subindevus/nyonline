@@ -11,7 +11,7 @@ async function fetchData() {
 
 function findAnswer(question, data) {
     const result = data.find(item => item.question.toLowerCase() === question.toLowerCase());
-    return result ? result.answer : "Em hok hiểu anh nói gì !!";
+    return result ? result.answer : "Em hok hiểu anh đang nói gì !!";
 }
 
 async function main() {
@@ -19,9 +19,9 @@ async function main() {
     if (question) {
         const data = await fetchData();
         const answer = findAnswer(question, data);
-        document.getElementById('response').textContent = JSON.stringify({ answer: answer }, null, 2);
+        document.body.textContent = JSON.stringify({ answer: answer });
     } else {
-        document.getElementById('response').textContent = "Created By Subin Dev <3";
+        document.body.textContent = "Created By Subin Dev";
     }
 }
 
