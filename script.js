@@ -11,7 +11,7 @@ async function fetchData() {
 
 function findAnswer(question, data) {
     const result = data.find(item => item.question.toLowerCase() === question.toLowerCase());
-    return result ? result.answer : "Em hog hiểu anh đang nói gì !";
+    return result ? result.answer : "Em hok hiểu anh đang nói gì !";
 }
 
 async function main() {
@@ -21,7 +21,7 @@ async function main() {
         const answer = findAnswer(question, data);
         document.body.innerText = JSON.stringify({ answer: answer });
     } else {
-        document.body.innerText = "API CREATE BY SUBIN DEV <3";
+        document.body.innerText = "CREATE BY SUBIN DEV :O";
     }
 }
 
