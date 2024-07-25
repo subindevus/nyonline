@@ -9,11 +9,6 @@ async function fetchData(fileName) {
     return data;
 }
 
-function findAnswer(question, data) {
-    const result = data.find(item => item.question.toLowerCase() === question.toLowerCase());
-    return result ? result.answer : null;
-}
-
 async function updateKeyUsage(key) {
     const keyData = await fetchData('key.json');
     if (keyData[key] > 0) {
@@ -26,6 +21,11 @@ async function updateKeyUsage(key) {
         return true;
     }
     return false;
+}
+
+function findAnswer(question, data) {
+    const result = data.find(item => item.question.toLowerCase() === question.toLowerCase());
+    return result ? result.answer : null;
 }
 
 async function main() {
